@@ -106,7 +106,7 @@ export const Unlock = () => {
         </div>
 
         <strong className={styles.heading}>
-        ApeStaking's MultiversX Delegation Dashboard
+          MultiversX Delegation Dashboard
         </strong>
 
         <div className={styles.description}>
