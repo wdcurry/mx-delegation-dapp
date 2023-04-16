@@ -110,7 +110,7 @@ export const Unlock = () => {
         </strong>
 
         <div className={styles.description}>
-          {`Delegate MultiversX (${network.egldLabel}) and earn up to 25% APY!`}
+          {`Delegate MultiversX (${network.egldLabel}) and earn up to 10% APY!`}
         </div>
 
         <div className={styles.connects}>
