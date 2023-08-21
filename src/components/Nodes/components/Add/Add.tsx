@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Formik } from 'formik';
 import { object, array, mixed } from 'yup';
 
@@ -29,7 +27,13 @@ export const Add = () => {
             file.errors && !file.errors.includes('length')
         )
       )
-      .test('keyIsUnused', 'Key exists already.', (value: any) =>
+      .test('keyIsUnique', 'Key already registered!', (value: any) =>
+        value.every(
+          (file: DropzonePayloadType) =>
+            file.errors && !file.errors.includes('registered')
+        )
+      )
+      .test('keyIsUnused', 'Key exists already on network!', (value: any) =>
         value.every(
           (file: DropzonePayloadType) =>
             file.errors && !file.errors.includes('existing')
@@ -38,7 +42,7 @@ export const Add = () => {
       .test('keyIsUnique', 'Duplicate key detected!', (value: any) =>
         value.every(
           (file: DropzonePayloadType) =>
-            file.errors && !file.errors.includes('unique')
+            file.errors && !file.errors.includes('duplicate')
         )
       )
   });
@@ -51,7 +55,7 @@ export const Add = () => {
         ''
       );
 
-      if (Boolean(value)) {
+      if (value) {
         await sendTransaction({
           args: value,
           type: 'addNodes',
